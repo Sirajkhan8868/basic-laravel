@@ -18,19 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::prefix('author')->name('author.')->name(function()
-{
-    Route::middleware(['guest:web'])->group(function()
-    {
-         Route::view('/login','back.pages.auth.login')->name('login');
-         Route::view('/forget-password','back.pages.auth.forget')->name('forget-password');
-    });
-    Route::middleware([])->group(function()
-    {
-        Route::get('/home',[AuthorController::class,'index'])->name('home');
 
-        Route::resource('post', 'PostController')
-    }
-);
-}
-);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

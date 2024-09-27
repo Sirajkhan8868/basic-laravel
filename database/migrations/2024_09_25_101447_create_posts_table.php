@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('catagory_id');
+            $table->foreignId('user_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('catagory_id')->references('id')->on('catagories')->onUpdate('cascadeS')->onDelete('cascade');
             $table->string('title');
             $table->longText('description');
             $table->boolean('status')->default(false);

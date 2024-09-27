@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Replies extends Model
 {
-    use HasFactory;
+    protected $fillable = ['comment_id','user_id','comment'];
 }
